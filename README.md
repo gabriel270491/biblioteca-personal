@@ -1,19 +1,33 @@
-# Biblioteca Personal
+# Biblioteca Personal con SQLAlchemy y MariaDB
 
-Una aplicación de línea de comandos en Python para gestionar una biblioteca personal. Permite agregar, actualizar, eliminar, buscar y listar libros almacenados en una base de datos SQLite.
-
-## Funcionalidades
-
-- Agregar nuevo libro
-- Actualizar información de un libro
-- Eliminar libro existente
-- Ver listado de libros
-- Buscar libros por título, autor o género
+Una aplicación de línea de comandos en Python que permite gestionar una biblioteca personal utilizando MariaDB como sistema de base de datos y SQLAlchemy como ORM.
 
 ## Requisitos
 
 - Python 3
-- SQLite3 (incluido en Python estándar)
+- MariaDB
+- pip
+
+## Instalación
+
+1. Clona este repositorio.
+2. Instala las dependencias:
+
+```bash
+pip install -r requirements.txt
+```
+
+3. Crea la base de datos `biblioteca` en MariaDB:
+
+```sql
+CREATE DATABASE biblioteca;
+```
+
+4. Asegúrate de que MariaDB esté corriendo y escuche en el puerto `3307`.
+
+## Configuración
+
+Edita el archivo `database.py` si necesitas cambiar usuario, contraseña o puerto de conexión a la base de datos.
 
 ## Ejecución
 
@@ -21,6 +35,10 @@ Una aplicación de línea de comandos en Python para gestionar una biblioteca pe
 python main.py
 ```
 
-## Autor
+## Funcionalidades
 
-Gabriel Ruiz - [GitHub](https://github.com/gabriel270491)
+- Agregar libros
+- Actualizar información
+- Eliminar libros
+- Ver listado
+- Buscar por título, autor o género

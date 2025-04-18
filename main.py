@@ -1,5 +1,9 @@
-import sqlite3
-from biblioteca import crear_tabla, agregar_libro, actualizar_libro, eliminar_libro, ver_libros, buscar_libros
+from biblioteca_personal.database import Base, engine
+from biblioteca_personal.modelos import Libro
+from biblioteca_personal.operaciones import agregar_libro, actualizar_libro, eliminar_libro, ver_libros, buscar_libros
+
+def crear_tablas():
+    Base.metadata.create_all(bind=engine)
 
 def menu():
     print("\n--- Biblioteca Personal ---")
@@ -11,29 +15,25 @@ def menu():
     print("6. Salir")
 
 def main():
-    conexion = sqlite3.connect("biblioteca.db")
-    crear_tabla(conexion)
-
+    crear_tablas()
     while True:
         menu()
         opcion = input("Seleccione una opción: ")
         if opcion == "1":
-            agregar_libro(conexion)
+            agregar_libro()
         elif opcion == "2":
-            actualizar_libro(conexion)
+            actualizar_libro()
         elif opcion == "3":
-            eliminar_libro(conexion)
+            eliminar_libro()
         elif opcion == "4":
-            ver_libros(conexion)
+            ver_libros()
         elif opcion == "5":
-            buscar_libros(conexion)
+            buscar_libros()
         elif opcion == "6":
             print("¡Hasta luego!")
             break
         else:
             print("Opción no válida. Intente de nuevo.")
-
-    conexion.close()
 
 if __name__ == "__main__":
     main()
